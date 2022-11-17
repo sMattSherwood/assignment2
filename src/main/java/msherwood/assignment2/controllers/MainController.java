@@ -1,5 +1,4 @@
-import java.util.List;
-
+package msherwood.assignment2.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -45,6 +44,15 @@ public class MainController {
         jrrTolkien.getBooksList().add(booksRepo.save(new Books("The Fellowship of the Ring", 35)));
         roaldDahi.getBooksList().add(booksRepo.save(new Books("Fantastic MR.Fox", 12)));
         roaldDahi.getBooksList().add(booksRepo.save(new Books("Boy", 7)));
+
+        //save all of this data
+        authorRepo.save(georgeOrwell);
+        authorRepo.save(leoTolstoy);
+        authorRepo.save(ernestHemingway);
+        authorRepo.save(hermanMelville);
+        authorRepo.save(stephenKing);
+        authorRepo.save(jrrTolkien);
+        authorRepo.save(roaldDahi);
 
     }
 
