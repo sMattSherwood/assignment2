@@ -19,5 +19,9 @@ public interface AuthorRepo extends CrudRepository<Authors,Integer> {
 
     List<Authors> searchAuthorByFirstName(String firstName);
 
+    List<Authors> sortAuthorByLastNameLetter(String lastNameLetter);
+
+    List<Authors> sortAuthorByLetterSequence(String letterSequence);
+
     
 }
