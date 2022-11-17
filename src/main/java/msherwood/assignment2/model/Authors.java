@@ -1,10 +1,14 @@
 package msherwood.assignment2.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -34,6 +38,12 @@ public class Authors {
 // last name column is declared
     @Column(name="LAST_NAME")
     private String lastName;
+
+// this will declare a one to many relationship with books where one authors can have many books
+    @OneToMany
+    @JoinColumn(name="AUTHOR_ID")
+// this array list will allow the many books be associated with an author
+    List<Books> booksList;
 
 
 

@@ -18,11 +18,10 @@ import lombok.NoArgsConstructor;
 public class Books {
 
 // constructor to give the items values 
-    public Books(String bookTitle, String year) {
-        this.bookId=0;
+    public Books(String bookTitle, Integer price) {
         this.bookTitle = bookTitle;
-        this.year = year;
-    }
+        this.price = price;
+    }   
  // this indicates the ID of this table   
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,5 +32,5 @@ public class Books {
     private String bookTitle;
 // book year column
     @Column(name="BOOK_YEAR")
-    private String year;    
+    private Integer price;    
 }
