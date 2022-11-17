@@ -11,9 +11,9 @@ import msherwood.assignment2.model.Authors;
 @Repository
 public interface AuthorRepo extends CrudRepository<Authors,Integer> {
 
-    List<Authors> orderAuthorByLastName(String lastName);
+    List<Authors> orderAuthorByLastName();
 
-    List<Authors> orderAuthorByFirstName(String firstName);
+    List<Authors> orderAuthorByFirstName();
 
     List<Authors> searchAuthorByLastName(String lastname);
 

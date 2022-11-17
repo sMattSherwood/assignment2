@@ -10,9 +10,9 @@ import msherwood.assignment2.model.Books;
 @Repository
 public interface BooksRepo extends CrudRepository<Books, Integer> {
 
-    List<Books> orderBooksByTitle(String bookTitle);
+    List<Books> orderBooksByTitle();
 
-    List<Books> orderByincreasingPrice(Integer bookPrice);
+    List<Books> orderByincreasingPrice();
 
     List<Books> findBooksWithKeyWord(String keyWord);
 
@@ -20,6 +20,6 @@ public interface BooksRepo extends CrudRepository<Books, Integer> {
 
     List<Books> findBookWithOneKeyWord(String keywordList);
 
-    
+
     
 }
