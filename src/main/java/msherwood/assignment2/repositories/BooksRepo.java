@@ -12,7 +12,7 @@ public interface BooksRepo extends CrudRepository<Books, Integer> {
 // this will create a query where it will order all by book title
     List<Books> findAllByOrderByBookTitle();
 // this will create a query where it will order by increasing price
-    List<Books> findAllByincreasingPriceOrderByAsc();
+    List<Books> findAllByincreasingOrderByAsc();
 // this will create a query where it will dispay all books with the two key words
     List<Books> findAllKeywordAndSecondKeyword(String keyWord, String SecondkeyWord);
 // this will create a query where it will display books without the keyword

@@ -90,15 +90,15 @@ public class MainController {
     public String getAuthorFirstName(@RequestParam String firstName, Model model)
     {
         List<Authors> authors = authorRepo.findByAuthorByFirstName(firstName);
-        model.addAttribute("author", authors);
+        model.addAttribute("authors", authors);
         return "/Authors";
     }
 // this will find an author by last name
     @GetMapping(value = "/findAuthorLastName")
     public String getAuthorLastName(@RequestParam String lastName, Model model)
     {
-        List<Authors> authors = authorRepo.findByAuthorByLastName(lastName)
-        model.addAttribute("author", authors);
+        List<Authors> authors = authorRepo.findByAuthorByLastName(lastName);
+        model.addAttribute("authors", authors);
         return "/Authors";
     }
 // find author by letter
@@ -106,7 +106,7 @@ public class MainController {
     public String getAuthorByLetter(@RequestParam String lastNameLetter, Model model)
     {
         List<Authors> authors = authorRepo.findByAuthorByLastNameStartingWith(lastNameLetter);
-        model.addAttribute("author", authors);
+        model.addAttribute("authors", authors);
         return "/Authors";
     }
 // find author by typing a bit of thier name
@@ -114,7 +114,7 @@ public class MainController {
     public String getAuthorBString(@RequestParam String letterSequence, Model model)
     {
         List<Authors> authors = authorRepo.findByAuthorContaining(letterSequence);
-        model.addAttribute("author", authors);
+        model.addAttribute("authors", authors);
         return "/Authors";
     }
     @GetMapping(value = "/Books")
@@ -134,7 +134,7 @@ public class MainController {
     @GetMapping(value = "/displayBooksByIncreasing")
     public String displayBooksByIncreasing(Model model)
     {
-        List<Books> books = booksRepo.findAllByincreasingPriceOrderByAsc();
+        List<Books> books = booksRepo.findAllByincreasingOrderByAsc();
         model.addAttribute("books", books);
         return "/Books";
     }

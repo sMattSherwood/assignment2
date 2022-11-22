@@ -9,6 +9,81 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
+    <div class="container">
+        <div class="row py-4">
+            <h1 class="display-3">Authors page</h1>
+        </div>
+        <!--this will display author by last name-->
+        <div class="row">
+            <div class="col-3 p-3 border border-dark">
+                <h4>Order by book titile</h4>
+                <form action="/orderLastName" method="post" class="form">
+                    <input type="submit" value="List author by last name">
+                </form>
+            </div>
+        </div>
+        <!--this will display author by first name-->
+        <div class="row">
+            <div class="col-3 p-3 border border-dark">
+                <h4>Order by book titile</h4>
+                <form action="/orderFirstName" method="post" class="form">
+                    <input type="submit" value="List author by last name">
+                </form>
+            </div>
+        </div>
+        <!--find author by last name-->
+        <div class="row">
+            <div class="col-3 p-3 border border-dark">
+                <h4>Order by book titile</h4>
+                <form action="/findAuthorLastName" method="post" class="form">
+                    <input type="text" name="lastName">
+                    <input type="submit" value="List author by last name list">
+                </form>
+            </div>
+        </div>
+        <!--find authors by first name-->
+        <div class="row">
+            <div class="col-3 p-3 border border-dark">
+                <h4>Order by book titile</h4>
+                <form action="/displayBooksWithOneKeywod" method="post" class="form">
+                    <input type="text" name="keywordOne">
+                    <input type="text" name="keywordTwo">
+                    <input type="submit" value="find author list">
+                </form>
+            </div>
+        </div>
+        <!--find author by lastname inital-->
+        <div class="row">
+            <div class="col-3 p-3 border border-dark">
+                <h4>Order by book titile</h4>
+                <form action="/findAuthorByLetter" method="post" class="form">
+                    <input type="text" name="lastNameLetter">
+                    <input type="submit" value="find author">
+                </form>
+            </div>
+        </div>
+        <!--find author by entered string-->
+        <div class="row">
+            <div class="col-3 p-3 border border-dark">
+                <h4>Order by book titile</h4>
+                <form action="/findAuthorByString" method="post" class="form">
+                    <input type="text" name="lastNameLetter">
+                    <input type="submit" value="find author">
+                </form>
+            </div>
+        </div>
+        <!--this is where the table where the data will be displayed-->
+        <div class="col-3 p-3 border border-dark">
+            <h4>Author list</h4>
+            <table>
+                <tr th:each="author:${authors}">
+                    <td th:text="${author.authorId}"></td>
+                    <td th:text="${author.firstName"></td>
+                    <td th:text="${author.lastName}"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
     
 </body>
 </html>

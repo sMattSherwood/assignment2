@@ -9,6 +9,71 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
+    <div class="container">
+        <div class="row py-4">
+            <h1 class="display-3">Books page</h1>
+        </div>
+        <!--this will dispay all books-->
+        <div class="row">
+            <div class="col-3 p-3 border border-dark">
+                <h4>Order by book titile</h4>
+                <form action="/displayBooks">
+                    <input type="submit" value="Display all books" formaction="/displayBooks">
+                </form>
+            </div>
+        </div>
+        <!--this will display all books from highest to lowest value-->
+        <div class="row">
+            <div class="col-3 p-3 border border-dark">
+                <h4>Display books from higest price</h4>
+                <form action="/displayBooksByIncreasing" method="post" class="form">
+                    <input type="submit" value="order books from highest to lowest price">
+                </form>
+            </div>
+        </div>
+        <!--this will find a book title using two key strings-->
+        <div class="row">
+            <div class="col-3 p-3 border border-dark">
+                <h4>Display books from higest price</h4>
+                <form action="/findBooksWithTwoKeywords" method="post" class="form">
+                    <input type="text" name="keywordOne" placeholder="keywordOne">
+                    <input type="text" name="keywordTwo" placeholder="keywordTwo">
+                    <input type="submit" value="order books from highest to lowest price">
+                </form>
+            </div>
+        </div>
+        <!--this will dispaly books without the keyword-->
+        <div class="row">
+            <div class="col-3 p-3 border border-dark">
+                <h4>Display books from higest price</h4>
+                <form action="/displayBooksWithoutWord" mehtod="post" class="form">
+                    <input type="text" name="keyword" placeholder="keyword">
+                    <input type="submit" value="order books from highest to lowest price">
+                </form>
+            </div>
+        </div>
+        <!--find books with the first key word but not the second one-->
+        <div class="row">
+            <div class="col-3 p-3 border border-dark">
+                <h4>Display books from higest price</h4>
+                <form action="/displayBooksWithoutWord" method="post" class="form">
+                    <input type="text" name="keyword" placeholder="keyword">
+                    <input type="submit" value="order books from highest to lowest price">
+                </form>
+            </div>
+        </div>
+        <!--this is where the table where the data will be displayed-->
+        <div class="col-3 p-3 border border-dark">
+            <h4>Book list</h4>
+            <table>
+                <tr th:each="book:${authors}">
+                    <td th:text="${book.bookId}"></td>
+                    <td th:text="${book.bookTitle"></td>
+                    <td th:text="${book.price}"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
     
 </body>
 </html>
