@@ -7,6 +7,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.fasterxml.jackson.annotation.JsonCreator.Mode;
+
 import msherwood.assignment2.model.Authors;
 import msherwood.assignment2.model.Books;
 import msherwood.assignment2.repositories.AuthorRepo;
@@ -71,7 +73,7 @@ public class MainController {
     @GetMapping(value = "/orderLastName")
     public String getOrderLastName(Model model)
     {
-        List<Authors> authors = authorRepo.orderAuthorByLastName();
+        List<Authors> authors = authorRepo.orderByAuthorByLastName();
         model.addAttribute("authors", authors);
         return "/Authors";
     }
@@ -79,15 +81,86 @@ public class MainController {
     @GetMapping(value = "/orderFirstName")
     public String getOrderFirstName( Model model)
     {
-        List<Authors> authors = authorRepo.orderAuthorByFirstName();
+        List<Authors> authors = authorRepo.orderByAuthorByFirstName();
         model.addAttribute("authors", authors);
         return "/Authors";
     }
-
+// this will find an author by first name
+    @GetMapping(value = "/findAuthorFirstName")
+    public String getAuthorFirstName(@RequestParam String firstName, Model model)
+    {
+        List<Authors> authors = authorRepo.findByAuthorByFirstName(firstName);
+        model.addAttribute("author", authors);
+        return "/Authors";
+    }
+// this will find an author by last name
+    @GetMapping(value = "/findAuthorLastName")
+    public String getAuthorLastName(@RequestParam String lastName, Model model)
+    {
+        List<Authors> authors = authorRepo.findByAuthorByLastName(lastName)
+        model.addAttribute("author", authors);
+        return "/Authors";
+    }
+// find author by letter
+    @GetMapping(value ="/findAuthorByLetter")
+    public String getAuthorByLetter(@RequestParam String lastNameLetter, Model model)
+    {
+        List<Authors> authors = authorRepo.findByAuthorByLastNameStartingWith(lastNameLetter);
+        model.addAttribute("author", authors);
+        return "/Authors";
+    }
+// find author by typing a bit of thier name
+    @GetMapping(value ="/findAuthorByString")
+    public String getAuthorBString(@RequestParam String letterSequence, Model model)
+    {
+        List<Authors> authors = authorRepo.findByAuthorContaining(letterSequence);
+        model.addAttribute("author", authors);
+        return "/Authors";
+    }
     @GetMapping(value = "/Books")
     public String getBooks()
     {
-        return"Books";
+        return"/Books";
+    }
+// this will dispay all books 
+    @GetMapping(value = "/displayBooks")
+    public String getBooksTitle(Model model)
+    {
+        List<Books> books = booksRepo.findAllByOrderByBookTitle();
+        model.addAttribute("books", books);
+        return "/Books";
+    }
+// this will dispay all books by increasing price
+    @GetMapping(value = "/displayBooksByIncreasing")
+    public String displayBooksByIncreasing(Model model)
+    {
+        List<Books> books = booksRepo.findAllByincreasingPriceOrderByAsc();
+        model.addAttribute("books", books);
+        return "/Books";
+    }
+// this will display books with two key words
+    @GetMapping(value = "/findBooksWithTwoKeywords")
+    public String displaybooksUsingTwoKeywords(@RequestParam String keywordOne, @RequestParam String keywordTwo, Model model)
+    {
+        List<Books> books = booksRepo.findAllKeywordAndSecondKeyword(keywordOne, keywordTwo);
+        model.addAttribute("books", books);
+        return "/Books";
+    }
+// this will diplay all that's not the key word
+    @GetMapping(value = "/displayBooksWithoutWord")
+    public String displayBookWithoutKeyword(@RequestParam String keyword, Model model)
+    {
+        List<Books> books = booksRepo.findAllBooksWithoutKeyWord(keyword);
+        model.addAttribute("books", books);
+        return "/Books";
+    }
+// this will display all with one key word but not the other
+    @GetMapping(value = "/displayBooksWithOneKeywod")
+    public String dispalyBooksWithOneKeyWord(@RequestParam String keywordOne, @RequestParam String keywordTwo, Model model)
+    {
+        List<Books> books = booksRepo.findAllBookWithOneKeyWordWithoutKeywordTwo(keywordOne, keywordTwo);
+        model.addAttribute("books", books);
+        return "/Books";
     }
 
 
