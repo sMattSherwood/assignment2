@@ -1,6 +1,11 @@
 package msherwood.assignment2.controllers;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import msherwood.assignment2.model.Authors;
 import msherwood.assignment2.model.Books;
@@ -53,7 +58,36 @@ public class MainController {
         authorRepo.save(stephenKing);
         authorRepo.save(jrrTolkien);
         authorRepo.save(roaldDahi);
+    }
 
+    @GetMapping(value="/Authors")
+    public String getAuthors()
+    {
+        return"Authors";
+
+    }
+
+// order the authors by last name
+    @GetMapping(value = "/orderLastName")
+    public String getOrderLastName(Model model)
+    {
+        List<Authors> authors = authorRepo.orderAuthorByLastName();
+        model.addAttribute("authors", authors);
+        return "/Authors";
+    }
+// order the authors by first name
+    @GetMapping(value = "/orderFirstName")
+    public String getOrderFirstName( Model model)
+    {
+        List<Authors> authors = authorRepo.orderAuthorByFirstName();
+        model.addAttribute("authors", authors);
+        return "/Authors";
+    }
+
+    @GetMapping(value = "/Books")
+    public String getBooks()
+    {
+        return"Books";
     }
 
 
